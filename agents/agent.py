@@ -1,6 +1,9 @@
-from Actor import Actor
-from Critic import Critic
-from OUNoise import OUNoise
+import numpy as np
+
+from agents.Actor import Actor
+from agents.Critic import Critic
+from agents.OUNoise import OUNoise
+from agents.ReplayBuffer import ReplayBuffer
 
 
 class DDPG():
