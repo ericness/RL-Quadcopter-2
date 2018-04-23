@@ -24,7 +24,7 @@ class PendulumTask():
         self.action_high = 2
         self.action_size = 1
 
-        self.max_steps = 100
+        self.max_steps = 300
         self.current_steps = 0
 
         # Goal
