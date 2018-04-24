@@ -24,7 +24,7 @@ class PendulumTask():
         self.action_high = 2
         self.action_size = 1
 
-        self.max_steps = 300
+        self.max_steps = 400
         self.current_steps = 0
 
         # Goal
@@ -57,6 +57,8 @@ class PendulumTask():
         self.current_steps += self.action_repeat
         if self.current_steps > self.max_steps:
             done = True
+        else:
+            done = False
         return next_state, reward, done
 
     def reset(self):
