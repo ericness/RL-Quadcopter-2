@@ -63,4 +63,5 @@ class PendulumTask():
         """Reset the sim to start a new episode."""
         state = self.sim.reset()
         state = np.concatenate([state] * self.action_repeat)
+        self.current_steps = 0
         return state
