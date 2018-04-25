@@ -3,7 +3,6 @@ channels:
   - defaults
 dependencies:
   - alabaster=0.7.10
-  - appnope=0.1.0
   - asn1crypto=0.24.0
   - babel=2.5.3
   - backcall=0.1.0
@@ -42,11 +41,8 @@ dependencies:
   - jupyter_console=5.2.0
   - jupyter_core=4.4.0
   - keras=2.1.5
-  - libcxx=4.0.1
-  - libcxxabi=4.0.1
   - libedit=3.1
   - libffi=3.2.1
-  - libgfortran=3.0.1
   - libiconv=1.15
   - libpng=1.6.34
   - libprotobuf=3.5.2
