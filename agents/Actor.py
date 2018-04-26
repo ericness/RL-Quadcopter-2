@@ -38,6 +38,10 @@ class Actor:
         net = layers.BatchNormalization()(net)
         net = layers.Activation(activation='relu')(net)
         net = layers.Dropout(rate=0.3)(net)
+        net = layers.Dense(units=100, activation=None)(net)
+        net = layers.BatchNormalization()(net)
+        net = layers.Activation(activation='relu')(net)
+        net = layers.Dropout(rate=0.3)(net)
         #net = layers.Dense(units=32, activation='relu')(net)
 
         # Try different layer sizes, activations, add batch normalization, regularizers, etc.
