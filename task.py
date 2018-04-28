@@ -21,7 +21,9 @@ class Task():
         self.state_size = self.action_repeat * 6
         self.action_low = 250
         self.action_high = 500
-        self.action_size = 4
+        self.action_size = 5
+
+        self.total_reward = 0
 
         # Goal
         self.target_pos = target_pos if target_pos is not None else np.array([0., 0., 10.]) 
@@ -41,6 +43,8 @@ class Task():
         reward = 5 * vz - abs(x) - abs(y) #- abs(phi) - abs(theta) - abs(psi)
         return reward
 
+
+
     def step(self, rotor_speeds):
         """Uses action to obtain next state, reward, done."""
         reward = 0
@@ -50,10 +54,12 @@ class Task():
             reward += self.get_reward() 
             pose_all.append(self.sim.pose)
         next_state = np.concatenate(pose_all)
+        self.total_reward += reward
         return next_state, reward, done
 
     def reset(self):
         """Reset the sim to start a new episode."""
         self.sim.reset()
-        state = np.concatenate([self.sim.pose] * self.action_repeat) 
+        state = np.concatenate([self.sim.pose] * self.action_repeat)
+        self.total_reward = 0
         return state
