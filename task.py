@@ -40,7 +40,7 @@ class Task():
         theta = self.sim.pose[4]
         psi = self.sim.pose[5]
 
-        reward = 5 * vz - 0.3 * abs(x) - 0.3 * abs(y) #- abs(phi) - abs(theta) - abs(psi)
+        reward = 5 * vz #- 0.3 * abs(x) - 0.3 * abs(y) #- abs(phi) - abs(theta) - abs(psi)
         return reward
 
 
