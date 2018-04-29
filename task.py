@@ -21,7 +21,7 @@ class Task():
         self.state_size = self.action_repeat * 6
         self.action_low = 400
         self.action_high = 425
-        self.action_size = 4
+        self.action_size = 1 # 4
 
         self.total_reward = 0
 
@@ -40,16 +40,17 @@ class Task():
         theta = self.sim.pose[4]
         psi = self.sim.pose[5]
 
-        reward =  self.target_pos[2] - z
+        reward = self.target_pos[2] - z
         return reward
 
 
 
-    def step(self, rotor_speeds):
+    def step(self, rotor_speed):
         """Uses action to obtain next state, reward, done."""
         reward = 0
         pose_all = []
         for _ in range(self.action_repeat):
+            rotor_speeds = rotor_speed * 4
             done = self.sim.next_timestep(rotor_speeds) # update the sim pose and velocities
             reward += self.get_reward() 
             pose_all.append(self.sim.pose)
