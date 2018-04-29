@@ -19,8 +19,8 @@ class Task():
         self.action_repeat = 3
 
         self.state_size = self.action_repeat * 6
-        self.action_low = 400
-        self.action_high = 425
+        self.action_low = 375
+        self.action_high = 450
         self.action_size = 1 # 4
 
         self.total_reward = 0
@@ -40,7 +40,7 @@ class Task():
         theta = self.sim.pose[4]
         psi = self.sim.pose[5]
 
-        reward = self.target_pos[2] - z
+        reward = -abs(self.target_pos[2] - z)
         return reward
 
 
