@@ -1,10 +1,11 @@
 import numpy as np
 from physics_sim import PhysicsSim
 
+
 class Task():
     """Task (environment) that defines the goal and provides feedback to the agent."""
     def __init__(self, init_pose=None, init_velocities=None, 
-        init_angle_velocities=None, runtime=5., target_pos=None):
+                 init_angle_velocities=None, runtime=5., target_pos=None):
         """Initialize a Task object.
         Params
         ======
@@ -19,9 +20,9 @@ class Task():
         self.action_repeat = 3
 
         self.state_size = self.action_repeat * 6
-        self.action_low = 375
+        self.action_low = 375  # constrain propeller speeds to reasonable range
         self.action_high = 450
-        self.action_size = 1 # 4
+        self.action_size = 1
 
         self.total_reward = 0
 
@@ -43,14 +44,12 @@ class Task():
         reward = -abs(self.target_pos[2] - z)
         return reward
 
-
-
     def step(self, rotor_speed):
         """Uses action to obtain next state, reward, done."""
         reward = 0
         pose_all = []
         for _ in range(self.action_repeat):
-            rotor_speeds = rotor_speed * 4
+            rotor_speeds = rotor_speed * 4 # constrain all rotors to same speed
             done = self.sim.next_timestep(rotor_speeds) # update the sim pose and velocities
             reward += self.get_reward() 
             pose_all.append(self.sim.pose)

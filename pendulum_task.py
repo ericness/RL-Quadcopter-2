@@ -4,8 +4,7 @@ import gym
 
 class PendulumTask():
     """Task (environment) that defines the goal and provides feedback to the agent."""
-    def __init__(self, init_pose=None, init_velocities=None, 
-        init_angle_velocities=None, runtime=5., target_pos=None):
+    def __init__(self):
         """Initialize a Task object.
         Params
         ======
@@ -26,24 +25,6 @@ class PendulumTask():
 
         self.max_steps = 300
         self.current_steps = 0
-
-        # Goal
-        self.target_pos = target_pos
-
-    # def get_reward(self):
-    #     """Uses current pose of sim to return reward."""
-    #     x = self.sim.pose[0]
-    #     y = self.sim.pose[1]
-    #     z = self.sim.pose[2]
-    #
-    #     vz = self.sim.v[2]
-    #
-    #     phi = self.sim.pose[3]
-    #     theta = self.sim.pose[4]
-    #     psi = self.sim.pose[5]
-    #
-    #     reward = 5 * vz - abs(x) - abs(y) #- abs(phi) - abs(theta) - abs(psi)
-    #     return reward
 
     def step(self, action):
         """Uses action to obtain next state, reward, done."""
